@@ -8,8 +8,8 @@ struct node *lchild,*rchild;
 void main()
 {
 int ch,data;
-struct node *insert(struct node*,int);
 struct node *search(struct node*,int);
+struct node *insert(struct node*,int);
 void inorder(struct node*);
 struct node *delete(struct node*,int);
 //null BST
@@ -54,6 +54,7 @@ while (1)
    }
    }
 }
+//function to search a node
 struct node *search(struct node *root,int data)
 {
  while(root!=0 && root->data!=data)
@@ -65,6 +66,7 @@ struct node *search(struct node *root,int data)
  }
 return root;
 }
+//function to insert an item
 struct node *insert(struct node *root, int data)
 {
  struct node *t, *par = 0, *t1;
@@ -97,16 +99,17 @@ struct node *insert(struct node *root, int data)
  }
 return root;
 }
-
+//function to traverse BST in inorder
 void inorder(struct node *root)
 {
 if(root!=0)
 {
  inorder(root->lchild);
- printf("%d",root->data);
+ printf("%d,",root->data);
  inorder(root->rchild);
 }
 }
+//function to delete a node
 struct node *delete(struct node *root,int data)
 {
  struct node *t=root,*par=0 ,*suc,*sucpar;
@@ -120,6 +123,7 @@ struct node *delete(struct node *root,int data)
   }
   if(t==0)
    printf("%d not found",data);
+   //case of leaf node
   else
   {
    if(t->lchild==0 &&t->rchild ==0)
@@ -131,25 +135,29 @@ struct node *delete(struct node *root,int data)
   else
    par->rchild=0;
  }
+ //case of one child
 else if(t->lchild==0 || t->rchild==0)
 {
  if(par==0)
    root=root->lchild==0?root->rchild:root->lchild;
  else if(data<par->data)
-   par->lchild=t->lchild==0?t->rchild:root->lchild;
+   par->lchild=t->lchild==0?t->rchild:t->lchild;
  else
     par->rchild=t->lchild==0?t->rchild:t->lchild;
 }
+//case of two child
 else
 {
   sucpar=t;
   suc=t->rchild;
+//finding inorder successor
   while(suc->lchild!=0)
   {
    sucpar=suc;
    suc=suc->lchild;
   }
  t->data=suc->data;
+//delete inorder successor
 if(suc->data<sucpar->data)
 {
  sucpar->lchild=suc->rchild;
@@ -162,7 +170,7 @@ free(t);
 }
 return root;
 }
-}
+
 
  
  
