@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yearly Calendar</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f4f8;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: white;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #cf91b5;
+        }
+
+        h2 {
+            color: #b33b72;
+        }
+    </style>
+</head>
+<body>
+ <h1>Yearly Calendar</h1>
+ <script>
+  var year = parseInt(prompt("Enter the year:"));
+  if (isNaN(year) || year < 1000 || year > 9999)
+{
+    document.write("Enter a valid year.");
+}
+ else
+ {
+  var months = ["January", "February", "March","April", "May", "June", "July", "August","September", "October", "November", "December"];
+  var days = ["Sun", "Mon", "Tue", "Wed","Thu", "Fri", "Sat"];
+  document.write("<h2>Calendar for " + year + "</h2>");
+  for (var m = 0; m < 12; m++) 
+  {
+   document.write("<h2>" + months[m] + "</h2>");
+   document.write("<table><tr>");
+   for (var d = 0; d < 7; d++)
+   {
+     document.write("<th>" + days[d] + "</th>");
+   }
+     document.write("</tr><tr>");
+     var firstDay = new Date(year, m, 1).getDay();
+     var totalDays = new Date(year, m + 1, 0).getDate();
+     for (var i = 0; i < firstDay; i++)
+     {
+      document.write("<td></td>");
+     }
+     for (var date = 1; date <= totalDays; date++) 
+     {
+      document.write("<td>" + date + "</td>");
+      if ((firstDay + date) % 7 == 0 && date != totalDays)
+      {
+       document.write("</tr><tr>");
+      }
+     }
+       document.write("</tr></table>");
+            }
+        }
+</script>
+</body>
+</html>
+
