@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, skyblue, purple);
+}
+
+form {
+    width: 320px;
+    margin: 50px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px gray;
+}
+
+h2 {
+    text-align: center;
+    color: purple;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border: 2px solid purple;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: purple;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: blue;
+}
+
+#error {
+    color: red;
+}
+
+#success {
+    color: green;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<form onsubmit="return validate()">
+
+<h2>Registration Form</h2>
+
+<input type="text" id="name" placeholder="Enter Name">
+
+<input type="text" id="email" placeholder="Enter Email">
+
+<input type="text" id="phone" placeholder="Enter Phone">
+
+<input type="password" id="pass" placeholder="Enter Password">
+
+<input type="password" id="confirm" placeholder="Confirm Password">
+
+<span id="error"></span>
+
+<p id="success"></p>
+
+<button type="submit">Register</button>
+
+</form>
+
+<script>
+
+function validate() {
+
+    let n = document.getElementById("name").value;
+    let e = document.getElementById("email").value;
+    let p = document.getElementById("phone").value;
+    let pass = document.getElementById("pass").value;
+    let c = document.getElementById("confirm").value;
+
+    let msg = "";
+
+    document.getElementById("success").innerHTML = "";
+
+    if(n == "")
+        msg = "Enter Name";
+
+    else if(e == "")
+        msg = "Enter Email";
+
+    else if(e.includes("@") == false || e.includes(".") == false)
+        msg = "Invalid Email";
+
+    else if(p.length != 10 || isNaN(p))
+        msg = "Enter 10 Digit Phone";
+
+    else if(pass.length < 6)
+        msg = "Password Minimum 6 Characters";
+
+    else if(pass != c)
+        msg = "Password Not Matching";
+
+    document.getElementById("error").innerHTML = msg;
+
+    if(msg == "") {
+        document.getElementById("success").innerHTML =
+        "Registration Successful!";
+    }
+
+    return false;
+}
+
+</script>
+
+</body>
+</html>
+
