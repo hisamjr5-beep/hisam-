@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Examination</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: lightblue;
+        }
+
+        .box {
+            background-color: white;
+            width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: darkblue;
+        }
+
+        p {
+            color: black;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            background-color: lightyellow;
+            color: darkgreen;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>ONLINE EXAMINATION</h2>
+
+    <p>1. What is HTML?</p>
+    <input type="radio" name="q1" value="1"> Hyper Text Markup Language<br>
+    <input type="radio" name="q1" value="0"> High Text Language<br>
+
+    <p>2. Which is used for styling?</p>
+    <input type="radio" name="q2" value="1"> CSS<br>
+    <input type="radio" name="q2" value="0"> Java<br>
+
+    <p>3. Which is a scripting language?</p>
+    <input type="radio" name="q3" value="1"> JavaScript<br>
+    <input type="radio" name="q3" value="0"> HTML<br>
+
+    <p>4. Which tag is used for a paragraph?</p>
+    <input type="radio" name="q4" value="1"> &lt;p&gt;<br>
+    <input type="radio" name="q4" value="0"> &lt;h1&gt;<br>
+
+    <p>5. Which tag is used for an image?</p>
+    <input type="radio" name="q5" value="1"> &lt;img&gt;<br>
+    <input type="radio" name="q5" value="0"> &lt;table&gt;<br>
+
+    <p>6. Which symbol is used for a comment in JavaScript?</p>
+    <input type="radio" name="q6" value="1"> //<br>
+    <input type="radio" name="q6" value="0"> ##<br>
+
+    <p>7. Which is a database?</p>
+    <input type="radio" name="q7" value="1"> MySQL<br>
+    <input type="radio" name="q7" value="0"> HTML<br>
+
+    <p>8. Which tag creates a hyperlink?</p>
+    <input type="radio" name="q8" value="1"> &lt;a&gt;<br>
+    <input type="radio" name="q8" value="0"> &lt;div&gt;<br>
+
+    <p>9. Which keyword declares a variable in JavaScript?</p>
+    <input type="radio" name="q9" value="1"> var<br>
+    <input type="radio" name="q9" value="0"> print<br>
+
+    <p>10. Which tag is used for the largest heading?</p>
+    <input type="radio" name="q10" value="1"> &lt;h1&gt;<br>
+    <input type="radio" name="q10" value="0"> &lt;h6&gt;<br><br>
+
+    <button onclick="checkResult()">Submit Exam</button>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+
+function checkResult()
+{
+    var score = 0;
+
+    for(var i = 1; i <= 10; i++)
+    {
+        var answer = document.querySelector(
+            'input[name="q' + i + '"]:checked'
+        );
+
+        if(answer != null && answer.value == "1")
+        {
+            score++;
+        }
+    }
+
+    document.getElementById("result").innerHTML =
+        "<h3>EXAM RESULT</h3>" +
+        "<h2>Your Score: " + score + " / 10</h2>";
+}
+
+
+</script>
+
+</body>
+</html>
+
