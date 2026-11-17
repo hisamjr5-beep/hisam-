@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Mouse Over Event</title>
+<style>
+  body{
+     text-align:center;
+     background-color:lightyellow;
+     padding-top: 100px;
+     }
+   img{
+      width:450 px;
+      height:350 px;
+      border:2px solid black;
+      }
+   p{
+     font-size:23px;
+     color:blue;
+    }
+</style>
+<script>
+var images=["/home/ksb/Downloads/download (3).jpeg","/home/ksb/Downloads/download (1).jpeg","/home/ksb/Downloads/download.jpeg"]
+var texts=["First image","Second image","Third image"];
+var i=0;
+function changeContent()
+{
+ i=(i+1)%images.length;
+ document.getElementById("image").src= images[i];
+ document.getElementById("text").innerHTML= texts[i];
+}
+</script>
+</head>
+<body>
+<h2>Mouse Over Event</h2>
+<div onmouseover="changeContent()">
+<img id="image" src="/home/ksb/Downloads/download (3).jpeg" width="200" height="150">
+<p id="text">Move mouse over this content</p>
+</div>
+</body>
+</html>
