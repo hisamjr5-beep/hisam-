@@ -64,7 +64,7 @@ void printgraph()
     t1 = g;
     while (t1 != 0)
     {
-        printf("\n%d\t", t1->data);
+        printf("\n%d->\t", t1->data);
         t2 = t1->point;
         while (t2 != 0)
         {
@@ -200,11 +200,17 @@ int main()
     addvertex(5);
 
     addedge(1, 2);
+    addedge(2, 1);
     addedge(1, 4);
+    addedge(4, 1);
     addedge(2, 3);
+    addedge(3, 2);
     addedge(2, 4);
+    addedge(4, 2);
     addedge(4, 3);
+    addedge(3, 4);
     addedge(4, 5);
+    addedge(5, 4);
 
     printf("\nThe graph is:\n");
     printgraph();
